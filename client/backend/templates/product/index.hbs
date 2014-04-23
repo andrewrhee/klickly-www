@@ -1,0 +1,115 @@
+<div class="panel">
+  <div class='clearfix header'>
+    <h1 class='pull-left'>Product Information</h1>
+  </div>
+  <form enctype="multipart/form-data" type='post'>
+    <fieldset>
+
+      <div class="row">
+
+        <div class="col-md-4">
+
+          <div class="form-group">
+            <label class="control-label" for="email">Name</label>
+            <div class="controls">
+              <input type="text" class="form-control" name="name" value="{{name}}" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="sku">SKU</label>
+            <div class="controls">
+              <input type="text" class="form-control" name="sku" value="{{sku}}" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="price">Price</label>
+            <div class="controls">
+              <input type="number" class="form-control" name="price" value="{{price}}"/>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-4">
+
+          <div class="form-group">
+            <label class="control-label" for="qty">Available Quantity</label>
+            <div class="controls">
+              <input type="number" step='1' class="form-control" name="qty" value="{{qty}}"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="description">Product Description</label>
+            <div class="controls">
+              <textarea name='description' class="form-control" rows="3">{{description}}</textarea>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-4">
+
+          {{#if _id}}
+            <div class="form-group">
+              <label class="control-label" for="image">Product Image</label>
+              <div class="controls">
+                {{#if image}}
+                  <img height="32" src="/product/{{_id}}/images/{{image}}">&nbsp;&nbsp;
+                {{/if}}
+                <span class="btn btn-success fileinput-button">
+                  <i class="glyphicon glyphicon-plus"></i>
+                  <span>{{#if image}}Update{{else}}Add{{/if}} Image</span>
+                  <input id="fileupload" type="file" name="image" data-url="/product/{{_id}}/image" />
+                </span>
+              </div>
+            </div>
+          {{/if}}
+
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-primary btn-lg">Save Product</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+<div class="panel">
+
+  <div class='clearfix header'>
+    <h2 class='pull-left'>Campaigns</h2>
+    <ul class='list-unstyled pull-right clearfix'>
+
+      {{#ifOr session.social.twitter.token session.social.facebook.token}}
+        <li class='pull-left'>
+          <button class="publish btn btn-success"><span class="glyphicon glyphicon-bullhorn"></span> Publish</button>
+        </li>
+      {{/ifOr}}
+
+      {{#unless session.social.twitter.token}}
+        <li class='pull-left'>
+          <a href="/client/twitter/connect" class="btn btn-info">Add Twitter Channel</a>
+        </li>
+      {{/unless}}
+      {{#unless session.social.facebook.token}}
+        <li class='pull-left'>
+          <a href="/client/facebook/connect" class="btn btn-info">Add Facebook Channel</a>
+        </li>
+      {{/unless}}
+    </ul>
+  </div>
+
+  <table class="table table-striped list">
+    <thead>
+      <th>Message</th>
+      <th>Expires</th>
+      <th class='last'>Channels</th>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>

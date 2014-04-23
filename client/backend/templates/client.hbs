@@ -1,0 +1,140 @@
+<h1>Client</h1>
+<form>
+  <fieldset>
+    <legend>Basic Information</legend>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label" for="name">Name</label>
+          <div class="controls">
+            <input type="text" class="form-control" name="name" value="{{name}}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="username">Username</label>
+          <div class="controls">
+            <input type="text" autocomplete='off' class="form-control" name="username" value="{{username}}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="password">Password</label>
+          <div class="controls">
+            <input type="password" autocomplete='off' class="form-control" name="password" placeholder="Min. 6 Characters" />
+          </div>
+        </div>
+        {{#if session.isAdmin}}
+          <div class="form-group checkbox">
+            <label>
+              <input type="checkbox" name='isAdmin' value='true' {{#if isAdmin}}checked{{/if}} /> Is Admin
+            </label>
+          </div>
+        {{/if}}
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label" for="email">Email</label>
+          <div class="controls">
+            <input type="text" autocomplete='off' class="form-control" name="email" value="{{email}}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="phone">Phone Number</label>
+          <div class="controls">
+            <input type="text" class="form-control" name="phone" value="{{phone}}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="address.street1">Address</label>
+          <div class="controls">
+            <input type="text" class="form-control" name="address.street1" value="{{address.street1}}" placeholder="Street"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="controls">
+            <input type="text" class="form-control" name="address.street2" value="{{address.street2}}" placeholder="Apt or Unit #"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-7">
+            <div class="controls">
+              <input type="text" class="form-control" name="address.city" value="{{address.city}}" placeholder="City"/>
+            </div>
+          </div>
+          <div class="form-group col-lg-2">
+            <div class="controls">
+              <input type="text" class="form-control" name="address.state" value="{{address.state}}" placeholder="State"/>
+            </div>
+          </div>
+          <div class="form-group col-lg-3">
+            <div class="controls">
+              <input type="text" class="form-control" name="address.postalCode" value="{{address.postalCode}}" placeholder="Zip Code"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Social</legend>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label" for="social.twitter">Twitter</label>
+          <div class="controls">
+            {{#if social.twitter.screenName}}
+              <img src="{{social.twitter.image}}" height=24 />
+              {{social.twitter.screenName}}
+              (<a href="#" class='remove-twitter'>remove</a>)
+            {{else}}
+              <a class='btn btn-success' href='/client/twitter/connect'>Sign into Twitter</a>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label" for="social.facebook">Facebook</label>
+          <div class="controls">
+            {{#if social.facebook.username}}
+              <img src="{{social.facebook.image}}" height=24 />
+              {{social.facebook.username}}
+              (<a href="#" class='remove-facebook'>remove</a>)
+            {{else}}
+              <a class='btn btn-success' href='/client/facebook/connect'>Sign into Facebook</a>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Payment</legend>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label" for="paypal.email">Merchant Account</label>
+          <div class="controls">
+            {{#if payment.braintree.id}}
+              {{payment.braintree.status}} (<a href="#" class='remove-payment'>remove merchant info</a>)
+            {{else}}
+              <a class='btn btn-success payment-modal' href='#'>Enter Payment Info</a>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        {{#if session.isAdmin}}
+          <div class="form-group">
+            <label class="control-label" for="klicklyRate">Klickly Rate</label>
+            <div class="controls">
+              <input type="text" class="form-control" name="klicklyRate" value="{{klicklyRate}}" placeholder="0.05"/>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-lg">Save Customer</button>
+    </div>
+  </fieldset>
+</form>

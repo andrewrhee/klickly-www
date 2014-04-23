@@ -1,0 +1,18 @@
+{
+  "client": {
+    "nav": [
+      {
+        "url": "/client/dashboard",
+        "text": "Dashboard"
+      },
+      {
+        "url": "/client/products",
+        "text": "My Products"
+      },
+      {
+        "url": "/client/orders",
+        "text": "Manage Orders"
+      }
+    ]
+  }
+}

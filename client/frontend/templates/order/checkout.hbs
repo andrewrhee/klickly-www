@@ -1,0 +1,110 @@
+{{#if _id}}
+  <div class="panel">
+    <h3>Thank you for your order!</h3>
+    <dl class="dl-horizontal">
+      <dt>Order Id:</dt>
+      <dd>{{_id}}</dd>
+      <dt>Total:</dt>
+      <dd>{{amount}}</dd>
+
+      <dt>Address:</dt>
+      <dd>
+        {{address.name}}<br/>
+        {{address.street1}} {{address.street2}}<br/>
+        {{address.city}}, {{address.state}} {{address.postalCode}}
+      </dd>
+    </dl>
+  </div>
+{{else}}
+  <div class="panel">
+    <form method="post" class="form">
+      {{#unless session.email}}
+      <fieldset>
+          <legend>Contact Information</legend>
+          <div class="row">
+            <div class="form-group col-lg-8">
+              <label for="email" class="control-label">Email:</label>
+              <div class="controlls">
+                <input type="text" name="email" placeholder="me@domain.com" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      {{/unless}}
+      <fieldset>
+        <legend>Billing Information</legend>
+        {{#if session.payment.token}}
+          <div class="saved-card">Use {{session.payment.cardType}} ending with {{session.payment.last4}} <a href="#" class='change-cc'>change</a></div>
+        {{/if}}
+        <div class='card-entry' {{#if session.payment.token}}style="display:none;"{{/if}}>
+          <div class="row">
+            <div class="form-group form-group col-lg-8">
+              <label for="card.number" class="control-label">Card Number:</label>
+              <div class="controlls">
+                <input type="text" name="card.number" value="" placeholder="•••• •••• •••• ••••" class="form-control"/>
+              </div>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="card.expiresAt" class="control-label">Expires:</label>
+              <div class="controlls">
+                <input type="text" name="card.exiresAt" value="" placeholder="MM / YY" class="form-control"/>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-lg-8">
+              <label for="card.cardholderName" class="control-label">Name on Card:</label>
+              <div class="controlls">
+                <input type="text" name="card.cardholderName" placeholder="" class="form-control"/>
+              </div>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="card.cvv" class="control-label">Card Code:</label>
+              <div class="controlls">
+                <input type="text" name="card.cvv" value="" placeholder="CVC" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Shipping Information</legend>
+        <div class="form-group">
+          <div class="controls">
+            <input type="text" name="address.name" value="{{session.addresses.0.name}}" placeholder="Recepient's Name" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="controls">
+            <input type="text" name="address.streetAddress" value="{{session.addresses.0.street1}}" placeholder="Street" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="controls">
+            <input type="text" name="address.extendedAddress" value="{{session.addresses.0.street2}}" placeholder="Apt or Unit #" class="form-control"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-7">
+            <div class="controls">
+              <input type="text" name="address.locality" value="{{session.addresses.0.city}}" placeholder="City" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group col-lg-2">
+            <div class="controls">
+              <input type="text" name="address.region" value="{{session.addresses.0.state}}" placeholder="State" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group col-lg-3">
+            <div class="controls">
+              <input type="text" name="address.postalCode" value="{{session.addresses.0.postalCode}}" placeholder="Postal Code" class="form-control"/>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <div class="form-group clearfix">
+        <button type="submit" class="pull-right btn btn-primary btn-lg">Purchase Now!</button>
+      </div>
+    </form>
+  </div>
+{{/if}}

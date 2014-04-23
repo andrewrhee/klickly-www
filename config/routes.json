@@ -1,0 +1,41 @@
+{
+  "GET /products": "product.index",
+  "GET /product/:id/images/:filename": "product.image",
+  "POST /product": "product.create",
+  "POST /product/:id/campaign": "product.campaignCreate",
+  "GET /product/campaign/:id": "product.campaignGet",
+  "POST /product/:id/image": "product.imageUpload",
+  "GET /product/:id": "product.at",
+  "PUT /product/:id": "product.update",
+  "DELETE /product/:id": "product.delete",
+
+  "GET /orders": "order.index",
+  "GET /purchase/:id": "order.checkout",
+  "POST /purchase/:id": "order.purchase",
+
+  "GET /clients": "client.index",
+  "GET /client/session": "client.session",
+  "POST /client/session": "client.login",
+  "GET /client/logout": "client.logout",
+
+  "POST /client/:id/merchant": "client.createMerchant",
+  "GET /client/:id": "client.at",
+  "GET /client/twitter/connect": "twitter.clientConnect",
+  "GET /client/twitter/callback": "twitter.clientCallback",
+  "GET /client/facebook/connect": "facebook.clientConnect",
+  "GET /client/facebook/callback": "facebook.clientCallback",
+  "POST /client": "client.create",
+  "PATCH /client/:id": "client.update",
+  "DELETE /client/:id": "client.delete",
+
+  "/user/session": "user.session",
+  "/user/twitter/connect/:campaignId?": "twitter.userConnect",
+  "/user/twitter/callback": "twitter.userCallback",
+  "/user/facebook/connect/:campaignId?": "facebook.userConnect",
+  "/user/facebook/callback": "facebook.userCallback",
+
+  "GET /": "index.index",
+
+  "GET /client*": "index.backend",
+  "GET /*": "index.frontend"
+}

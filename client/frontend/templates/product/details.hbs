@@ -1,0 +1,13 @@
+<div id="panel-product" class="panel">
+  <div class='product-header'>
+    <img width="72" src="{{image}}" class="product-img"/>
+    <h2>{{name}}</h2>
+  </div>
+  <p>{{description}}</p>
+  <div>${{price}}</div>
+  {{#unless isCheckout}}
+    <div class="buy">
+      <a href="/purchase/{{campaign._id}}" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-shopping-cart"></i> Buy Now</a>
+    </div>
+  {{/unless}}
+</div>

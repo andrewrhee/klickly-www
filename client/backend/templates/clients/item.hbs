@@ -1,0 +1,10 @@
+<td>{{name}}</td>
+<td>{{username}}</td>
+<td>{{email}}</td>
+<td>{{phone}}</td>
+<td>{{#if isAdmin}}Admin{{else}}Client{{/if}}</td>
+<td class='last'>
+  <a href="#" class='edit' data-id="{{_id}}">edit</a>
+  <span class='row-spacer'>|</span>
+  <a href="#" class='delete' data-id="{{_id}}">delete</a>
+</td>

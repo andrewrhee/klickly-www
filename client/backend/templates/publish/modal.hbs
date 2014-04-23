@@ -1,0 +1,46 @@
+<div class='modal fade'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form class="form-horizontal">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Publish</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="control-label col-lg-3" for="message">Message:</label>
+            <div class="col-lg-9 controls">
+              <textarea class="form-control" rows="5" name='message' placeholder='Your Message'></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3" for="address.state">Expires In:</label>
+            <div class="col-lg-9 controls">
+              <input type="text" class="form-control" name="expiresIn" value='12:00' placeholder="HH:MM"/>
+            </div>
+          </div>
+
+          <div class="form-group channels">
+            <label class="control-label col-lg-3">Channels:</label>
+            <div class="col-lg-9 controls">
+              {{#if session.social.twitter.token}}
+                <label class="checkbox-inline">
+                  <input type="checkbox" name="channels.twitter" value="1" checked="checked"> Twitter
+                </label>
+              {{/if}}
+              {{#if session.social.facebook.token}}
+                <label class="checkbox-inline">
+                  <input type="checkbox" name="channels.facebook" value="1" checked="checked"> Facebook
+                </label>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

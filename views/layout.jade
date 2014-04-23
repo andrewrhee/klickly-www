@@ -1,0 +1,21 @@
+doctype 5
+html(lang="en")
+  head
+    title= title || 'Klickly'
+    link(href='https://fonts.googleapis.com/css?family=Montserrat', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/styles/index.css')
+  body
+    header#header.navbar.bs-docs-nav(role="banner")
+      #header-container.container
+        .navbar-header
+          .navbar-brand(href="/") Klickly
+
+    #main.container
+      block content
+
+    #modal
+  
+    footer
+      .container
+        .footer-content &copy; 2013 Klickly. All rights reserved.
